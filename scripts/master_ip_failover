@@ -31,7 +31,7 @@ def main():
     parser.add_option('--orig_master_ssh_port', type='string')
     parser.add_option('--new_master_host', type='string')
     parser.add_option('--new_master_ip', type='string')
-    parser.add_option('--new_master_port', type='string')
+    parser.add_option('--new_master_port', type='int')
     parser.add_option('--new_master_ssh_port', type='string')
     parser.add_option('--new_master_user', type='string')
     parser.add_option('--new_master_password', type='string')
@@ -78,6 +78,7 @@ def main():
                     orig_master_ip=options.orig_master_ip,
                     new_master_host=options.new_master_host,
                     new_master_ip=options.new_master_ip,
+                    new_master_port=options.new_master_port,
                     ssh_user=options.ssh_user,
                     ssh_port=options.new_master_ssh_port,
                     ssh_options=options.ssh_options)

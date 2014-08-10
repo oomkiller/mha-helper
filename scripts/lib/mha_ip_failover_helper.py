@@ -40,9 +40,9 @@ class MHA_IP_failover_helper(object):
                                 ssh_user, ssh_options, ssh_port):
         config_helper = MHA_config_helper(host=orig_master_host)
 
-        orig_master = MySQL_helper(host=orig_master_ip, 
-                                    user=config_helper.get_mysql_user(),
-                                    password=config_helper.get_mysql_password())
+        #orig_master = MySQL_helper(host=orig_master_ip, 
+        #                            user=config_helper.get_mysql_user(),
+        #                            password=config_helper.get_mysql_password())
 
         if ssh_port is None:
             ssh_port = 22
@@ -62,13 +62,14 @@ class MHA_IP_failover_helper(object):
         return exit_code
 
     def execute_start_command(self, orig_master_host, orig_master_ip, 
-                                new_master_host, new_master_ip, 
+                                new_master_host, new_master_ip, new_master_port
                                 ssh_user, ssh_options, ssh_port):
         config_helper = MHA_config_helper(host=new_master_host)
         
         new_master = MySQL_helper(host=new_master_ip, 
                                     user=config_helper.get_mysql_user(),
-                                    password=config_helper.get_mysql_password())
+                                    password=config_helper.get_mysql_password(),
+                                    port=new_master_port)
 
         if ssh_port is None:
             ssh_port = 22

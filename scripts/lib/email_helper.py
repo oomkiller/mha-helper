@@ -20,8 +20,8 @@ import smtplib
 from email.mime.text import MIMEText
 
 class Email_helper(object):
-    SMTP_HOST = "localhost"
-    SENDER = "mha_helper@%s" % socket.getfqdn()
+    SMTP_HOST = "smtp.test.com"
+    SENDER = "xxx@test.com"
 
     def __init__(self):
         self._email_sender = smtplib.SMTP(Email_helper.SMTP_HOST)
@@ -30,7 +30,9 @@ class Email_helper(object):
         if len(to_email_list) < 1:
             return False
 
-        email_sender = smtplib.SMTP(Email_helper.SMTP_HOST)
+        email_sender = smtplib.SMTP()
+        email_sender.connect(Email_helper.SMTP_HOST)
+        email_sender.login("username","password")
 
         email_msg = MIMEText(msg)
         email_msg['Subject'] = subject

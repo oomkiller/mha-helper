@@ -19,14 +19,15 @@ import MySQLdb
 import re
 
 class MySQL_helper(object):
-    def __init__(self, host, user, password):
+    def __init__(self, host, user, password, port):
         self._host = host
         self._user = user
         self._password = password
+        self._port = port
 
     def connect(self):
         try:
-            self._connection = MySQLdb.connect(host=self._host, user=self._user, passwd=self._password)
+            self._connection = MySQLdb.connect(host=self._host, user=self._user, passwd=self._password, port=self._port)
         except MySQLdb.Error as e:
             print "Error %d: %s" % (e.args[0], e.args[1])
             return False
