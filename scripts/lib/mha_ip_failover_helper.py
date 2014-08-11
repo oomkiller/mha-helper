@@ -62,7 +62,7 @@ class MHA_IP_failover_helper(object):
         return exit_code
 
     def execute_start_command(self, orig_master_host, orig_master_ip, 
-                                new_master_host, new_master_ip, new_master_port
+                                new_master_host, new_master_ip, new_master_port,
                                 ssh_user, ssh_options, ssh_port):
         config_helper = MHA_config_helper(host=new_master_host)
         
